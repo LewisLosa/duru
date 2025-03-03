@@ -1,0 +1,29 @@
+﻿<Window x:Class="Duru.UI.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Duru Hotel Room Management" Height="450" Width="800">
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid ItemsSource="{Binding Rooms}"
+                  AutoGenerateColumns="False"
+                  Grid.Row="0"
+                  Height="200">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Room Name" Binding="{Binding RoomName}" />
+                <DataGridTextColumn Header="Price" Binding="{Binding RoomPrice}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Yeni Oda Ekle"
+                Command="{Binding AddRoomCommand}"
+                Grid.Row="1"
+                Margin="0,10,0,0"
+                HorizontalAlignment="Left"
+                Width="100" />
+    </Grid>
+</Window>
