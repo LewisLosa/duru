@@ -1,0 +1,76 @@
+﻿<Window x:Class="Duru.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Duru.UI"
+        xmlns:viewModel="clr-namespace:Duru.UI.ViewModel;assembly=Duru.UI.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+  <Window.Resources>
+    <viewModel:MainWindowViewModel x:Key="viewModel"
+                            InfoMessageTitle="Please Wait While Loading Application..."
+                            InfoMessageTimeout="1500"
+                            StatusMessage="Sample WPF Application" />
+  </Window.Resources> 
+  <Grid Background="{StaticResource gridBackgroundColor}"
+        DataContext="{StaticResource viewModel}">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!-- Menu Area -->
+    <Menu Grid.Row="0"
+          IsMainMenu="True">
+      <Menu.ItemsPanel>
+        <ItemsPanelTemplate>
+          <DockPanel HorizontalAlignment="Stretch" />
+        </ItemsPanelTemplate>
+      </Menu.ItemsPanel>
+      <MenuItem Header="_File">
+        <MenuItem Header="E_xit"
+                  Tag="exit"
+                  Click="MenuItem_Click" />
+      </MenuItem>
+      <MenuItem Header="Users"
+                Click="MenuItem_Click"
+                IsEnabled="{Binding UserEntity.IsLoggedIn}"
+                Tag="WPF.Sample.UserControls.UserMaintenanceControl" />
+      <MenuItem Header="Feedback"
+                Click="MenuItem_Click"
+                IsEnabled="{Binding UserEntity.IsLoggedIn}"
+                Tag="WPF.Sample.UserControls.UserFeedbackControl" />
+      <MenuItem Header="{Binding Path=LoginMenuHeader}"
+                HorizontalAlignment="Right"
+                Click="MenuItem_Click"
+                Tag="login" />
+    </Menu>
+
+    <!-- Informational Message Area -->
+    <Border Grid.Row="1"
+            Panel.ZIndex="2"
+            Visibility="{Binding Path=IsInfoMessageVisible,
+            Converter={StaticResource visibilityConverter}}"
+            Style="{StaticResource infoMessageArea}">
+      <StackPanel>
+        <TextBlock FontSize="40"
+                   Text="{Binding Path=InfoMessageTitle}" />
+        <TextBlock FontSize="24"
+                   Text="{Binding Path=InfoMessage}" />
+      </StackPanel>
+    </Border>
+
+    <!-- Content Area -->
+    <Grid Grid.Row="1"
+          Panel.ZIndex="1"
+          Name="contentArea"
+          Style="{StaticResource contentAreaStyle}" />
+
+    <!-- Status Message Area -->
+    <TextBlock Grid.Row="2"
+               Text="{Binding Path=StatusMessage}"
+               Style="{StaticResource statusAreaStyle}"  />
+  </Grid>
+</Window>
