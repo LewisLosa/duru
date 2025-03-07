@@ -6,10 +6,8 @@ using System.Windows.Threading;
 using Common.Library;
 using Duru.UI.Data.Entities;
 using Duru.UI.ViewModel;
-using WPF.Sample.DataLayer;
-using WPF.Sample.ViewModelLayer;
 
-namespace WPF.Sample
+namespace Duru.UI
 {
   public partial class MainWindow : Window
   {
@@ -67,13 +65,13 @@ namespace WPF.Sample
           break;
 
         case MessageBrokerMessages.LOGIN_SUCCESS:
-          _viewModel.RoomEntity = (Room)e.MessagePayload;
+          _viewModel.EmployeeEntity = (Employee)e.MessagePayload;
           _viewModel.LoginMenuHeader = "Logout " +
-              _viewModel.RoomEntity.UserName;
+              _viewModel.EmployeeEntity.FirstName + _viewModel.EmployeeEntity.LastName;
           break;
 
         case MessageBrokerMessages.LOGOUT:
-          _viewModel.RoomEntity.IsLoggedIn = false;
+          _viewModel.EmployeeEntity.IsLoggedIn = false;
           _viewModel.LoginMenuHeader = "Login";
           break;
 
@@ -153,11 +151,11 @@ namespace WPF.Sample
           break;
 
         case "login":
-          if (_viewModel.RoomEntity.IsLoggedIn) {
+          if (_viewModel.EmployeeEntity.IsLoggedIn) {
             // Logging out, so close any open windows
             CloseUserControl();
             // Reset the user object
-            _viewModel.RoomEntity = new User();
+            _viewModel.EmployeeEntity = new Employee();
             // Make menu display Login
             _viewModel.LoginMenuHeader = "Login";
           }

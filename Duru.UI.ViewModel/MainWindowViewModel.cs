@@ -22,7 +22,7 @@ namespace Duru.UI.ViewModel
     private Timer _infoMessageTimer = null;
     private int _infoMessageTimeout;
 
-    private Room _roomEntity = new Room();
+    private Employee _employeeEntity = new Employee();
     #endregion
 
     #region Public Properties
@@ -80,11 +80,11 @@ namespace Duru.UI.ViewModel
       }
     }
     
-    public Room RoomEntity
+    public Employee EmployeeEntity
     {
-      get { return _roomEntity; }
+      get { return _employeeEntity; }
       set {
-        _roomEntity = value;
+        _employeeEntity = value;
         // TODO: Güncelleme eventi eklenecek.
       }
     }

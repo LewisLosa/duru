@@ -11,6 +11,8 @@ namespace Duru.UI.Data.Models
         }
 
         public virtual DbSet<Room> Rooms { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
 
         public List<ValidationMessage> CreateValidationMessages(DbUpdateException ex)
         {

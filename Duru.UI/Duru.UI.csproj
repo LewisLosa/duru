@@ -9,6 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Duru.Resources\Duru.Resources.csproj" />
       <ProjectReference Include="..\Duru.UI.ViewModel\Duru.UI.ViewModel.csproj" />
     </ItemGroup>
 

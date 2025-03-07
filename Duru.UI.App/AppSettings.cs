@@ -24,20 +24,20 @@ public class AppSettings : ConfigurationSettings
     #endregion
 
     #region Private Properties
-    private Room _roomEntity = new Room();
+    private Employee _employeeEntity = new Employee();
     private int _infoMessageTimeout;
     private string _emailDomain;
     #endregion
 
     #region Public Properties
 
-    public Room RoomEntity
+    public Employee EmployeeEntity
     {
-        get => _roomEntity;
+        get => _employeeEntity;
         set
         {
-            _roomEntity = value;
-            // TODO: Güncelleme eventi eklenecek.
+            _employeeEntity = value;
+            RaisePropertyChanged("EmployeeEntity");
         }
     }
     
@@ -46,7 +46,7 @@ public class AppSettings : ConfigurationSettings
         get { return _infoMessageTimeout; }
         set {
             _infoMessageTimeout = value;
-            // TODO: Güncelleme eventi eklenecek.
+            RaisePropertyChanged("InfoMessageTimeout");
         }
     }
 
@@ -55,7 +55,7 @@ public class AppSettings : ConfigurationSettings
         get { return _emailDomain; }
         set {
             _emailDomain = value;
-            // TODO: Güncelleme eventi eklenecek.
+            RaisePropertyChanged("EmailDomain");
         }
     }
     #endregion
