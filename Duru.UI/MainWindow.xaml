@@ -1,26 +1,27 @@
 ﻿<mah:MetroWindow x:Class="Duru.UI.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:local="clr-namespace:Duru.UI"
-        xmlns:viewModel="clr-namespace:Duru.UI.ViewModel;assembly=Duru.UI.ViewModel"
-        mc:Ignorable="d"
-        Title="MainWindow" 
-        Height="450" 
-        Width="800"
-        BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
-        BorderThickness="0.25"
-        WindowStartupLocation="CenterScreen">
-    
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 xmlns:local="clr-namespace:Duru.UI"
+                 xmlns:viewModel="clr-namespace:Duru.UI.ViewModel;assembly=Duru.UI.ViewModel"
+                 mc:Ignorable="d"
+                 Loaded="Window_Loaded"
+                 Title="MainWindow"
+                 Height="450"
+                 Width="800"
+                 BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
+                 BorderThickness="0.25"
+                 WindowStartupLocation="CenterScreen">
+
     <mah:MetroWindow.Resources>
         <viewModel:MainWindowViewModel x:Key="viewModel"
                                        InfoMessageTitle="Please Wait While Loading Application..."
                                        InfoMessageTimeout="1500"
                                        StatusMessage="Sample WPF Application" />
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </mah:MetroWindow.Resources>
 
     <Grid DataContext="{StaticResource viewModel}">
@@ -31,7 +32,7 @@
         </Grid.RowDefinitions>
 
         <!-- Menu Area -->
-        <Menu Grid.Row="0" 
+        <Menu Grid.Row="0"
               Background="{DynamicResource MahApps.Brushes.Menu.Background}"
               Foreground="{DynamicResource MahApps.Brushes.Text}">
             <Menu.ItemsPanel>
@@ -39,17 +40,17 @@
                     <DockPanel HorizontalAlignment="Stretch" />
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            
+
             <MenuItem Header="_File">
                 <MenuItem Header="E_xit"
-                         Tag="exit"
-                         Click="MenuItem_Click">
+                          Tag="exit"
+                          Click="MenuItem_Click">
                     <MenuItem.Icon>
                         <iconPacks:PackIconMaterial Kind="ExitToApp" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            
+
             <MenuItem Header="Users"
                       Click="MenuItem_Click"
                       IsEnabled="{Binding UserEntity.IsLoggedIn}"
@@ -58,7 +59,7 @@
                     <iconPacks:PackIconMaterial Kind="AccountGroup" />
                 </MenuItem.Icon>
             </MenuItem>
-            
+
             <MenuItem Header="Feedback"
                       Click="MenuItem_Click"
                       IsEnabled="{Binding UserEntity.IsLoggedIn}"
@@ -67,7 +68,7 @@
                     <iconPacks:PackIconMaterial Kind="Comment" />
                 </MenuItem.Icon>
             </MenuItem>
-            
+
             <MenuItem Header="{Binding Path=LoginMenuHeader}"
                       HorizontalAlignment="Right"
                       Click="MenuItem_Click"
@@ -79,44 +80,49 @@
         </Menu>
 
         <!-- Informational Message Area -->
-        <mah:MetroContentControl Grid.Row="1" 
-                                Panel.ZIndex="2"
-                                Visibility="{Binding Path=IsInfoMessageVisible, 
-                                Converter={StaticResource BooleanToVisibilityConverter}}">
+        <mah:MetroContentControl Grid.Row="1"
+                                 Panel.ZIndex="2"
+                                 Visibility="{Binding Path=IsInfoMessageVisible, 
+                                                          Converter={StaticResource BooleanToVisibilityConverter}}">
             <Border Background="{DynamicResource MahApps.Brushes.Accent}"
-                    Opacity="0.9"
+                    Opacity="0.8"
                     CornerRadius="8"
-                    Margin="20"
-                    Padding="20">
+                    Padding="20"
+                    Width="480"
+                    Height="160"
+                    >
                 <StackPanel>
-                    <TextBlock FontSize="40"
-                             Text="{Binding Path=InfoMessageTitle}"
-                             Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
-                             TextAlignment="Center"/>
-                    <TextBlock FontSize="24"
-                             Text="{Binding Path=InfoMessage}"
-                             Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
-                             TextAlignment="Center"
-                             Margin="0,10,0,0"/>
+                    <mah:ProgressRing IsActive="{Binding IsInfoMessageVisible}"
+                                      Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
+                                      Width="48"
+                                      Height="48"
+                                      Margin="0,0,0,15" />
+                    <TextBlock FontSize="18"
+                               Text="{Binding Path=InfoMessageTitle}"
+                               Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
+                               TextAlignment="Center" />
+                    <TextBlock FontSize="12"
+                               Text="{Binding Path=InfoMessage}"
+                               Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
+                               TextAlignment="Center"
+                               Margin="0,10,0,0" />
                 </StackPanel>
             </Border>
         </mah:MetroContentControl>
 
         <!-- Content Area -->
         <mah:MetroContentControl Grid.Row="1"
-                                Panel.ZIndex="1"
-                                Margin="10"
-                                
-                                >
-            <Grid x:Name="ContentArea"/>
+                                 Panel.ZIndex="1"
+                                 Margin="10">
+            <Grid x:Name="ContentArea" />
         </mah:MetroContentControl>
 
         <!-- Status Message Area -->
         <StatusBar Grid.Row="2"
-                  Background="{DynamicResource MahApps.Brushes.Accent}">
+                   Background="{DynamicResource MahApps.Brushes.Accent}">
             <TextBlock Text="{Binding Path=StatusMessage}"
-                     Margin="10,5"
-                     Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
+                       Margin="10,5"
+                       Foreground="{DynamicResource MahApps.Brushes.IdealForeground}" />
         </StatusBar>
     </Grid>
 </mah:MetroWindow>

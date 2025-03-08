@@ -203,20 +203,21 @@ namespace Duru.UI
     #region LoadApplication Method
     public async Task LoadApplication()
     {
-      _viewModel.InfoMessage = "Loading State Codes...";
+      _viewModel.InfoMessageTitle = "Initialiazing";
       await Dispatcher.BeginInvoke(new Action(() => {
-        _viewModel.LoadStateCodes();
+        LoadAllDataAsync();
       }), DispatcherPriority.Background);
-
-      _viewModel.InfoMessage = "Loading Country Codes...";
-      await Dispatcher.BeginInvoke(new Action(() => {
-        _viewModel.LoadCountryCodes();
-      }), DispatcherPriority.Background);
-
-      _viewModel.InfoMessage = "Loading Employee Types...";
-      await Dispatcher.BeginInvoke(new Action(() => {
-        _viewModel.LoadEmployeeTypes();
-      }), DispatcherPriority.Background);
+      
+      async Task LoadAllDataAsync()
+      {
+        await Task.Delay(1200);
+        _viewModel.InfoMessage = "Loading State Codes...";
+        await _viewModel.LoadStateCodesAsync();
+        _viewModel.InfoMessage = "Loading Country Codes...";
+        await _viewModel.LoadCountryCodesAsync();
+        _viewModel.InfoMessage = "Loading Employee Types...";
+        await _viewModel.LoadEmployeeTypesAsync();
+      }
     }
     #endregion
   }

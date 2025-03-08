@@ -118,28 +118,64 @@ namespace Duru.UI.ViewModel
       IsInfoMessageVisible = false;
     }
     #endregion
-
+    
     #region LoadStateCodes Method
-    public void LoadStateCodes()
+    public async Task LoadStateCodesAsync()
     {
-      // TODO: Write code to load state codes here
-      System.Threading.Thread.Sleep(SECONDS);
+      IsInfoMessageVisible = true;
+      InfoMessageTitle = "Loading State Codes...";
+    
+      await Task.Run(async () =>
+      {
+        // Simüle edilmiş yükleme işlemi
+        for (int i = 0; i < 3; i++)
+        {
+          await Task.Delay(500); // Her adımda 500ms bekle
+        }
+      });
+
+      await Task.Delay(1000); // UI'da progress ring'in görünür kalması için ek bekleme
+      IsInfoMessageVisible = false;
     }
     #endregion
 
     #region LoadCountryCodes Method
-    public void LoadCountryCodes()
+    public async Task LoadCountryCodesAsync()
     {
-      // TODO: Write code to load country codes here
-      System.Threading.Thread.Sleep(SECONDS);
+      IsInfoMessageVisible = true;
+      InfoMessageTitle = "Loading Country Codes...";
+    
+      await Task.Run(async () =>
+      {
+        // Simüle edilmiş yükleme işlemi
+        for (int i = 0; i < 3; i++)
+        {
+          await Task.Delay(500);
+        }
+      });
+
+      await Task.Delay(1000);
+      IsInfoMessageVisible = false;
     }
     #endregion
 
     #region LoadEmployeeTypes Method
-    public void LoadEmployeeTypes()
+    public async Task LoadEmployeeTypesAsync()
     {
-      // TODO: Write code to load employee types here
-      System.Threading.Thread.Sleep(SECONDS);
+      IsInfoMessageVisible = true;
+      InfoMessageTitle = "Loading Employee Types...";
+    
+      await Task.Run(async () =>
+      {
+        // Simüle edilmiş yükleme işlemi
+        for (int i = 0; i < 3; i++)
+        {
+          await Task.Delay(500);
+        }
+      });
+
+      await Task.Delay(1000);
+      IsInfoMessageVisible = false;
     }
     #endregion
   }
