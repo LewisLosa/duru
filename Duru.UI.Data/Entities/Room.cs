@@ -22,7 +22,7 @@ public class Room : CommonBase
         set
         {
             _roomId = value;
-            // TODO: Güncelleme eventi eklenecek.
+            RaisePropertyChanged("RoomId");
         }
     }
     
@@ -33,7 +33,7 @@ public class Room : CommonBase
         set
         {
             _capacity = value;
-            // TODO: Güncelleme eventi eklenecek.
+            RaisePropertyChanged("Capacity");
         }
     }
 
@@ -43,7 +43,7 @@ public class Room : CommonBase
         set
         {
             _floor = value;
-            // TODO: Güncelleme eventi eklenecek.
+            RaisePropertyChanged("Floor");
         }
     }
 
@@ -53,7 +53,7 @@ public class Room : CommonBase
         set
         {
             _roomStatus = value;
-            // TODO: Güncelleme eventi eklenecek.
+            RaisePropertyChanged("RoomStatus");
         }
     }
 
@@ -63,7 +63,7 @@ public class Room : CommonBase
         set
         {
             _roomType = value;
-            // TODO: Güncelleme eventi eklenecek.
+            RaisePropertyChanged("RoomType");
         }
     }
 }

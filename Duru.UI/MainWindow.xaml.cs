@@ -6,10 +6,11 @@ using System.Windows.Threading;
 using Common.Library;
 using Duru.UI.Data.Entities;
 using Duru.UI.ViewModel;
+using MahApps.Metro.Controls;
 
 namespace Duru.UI
 {
-  public partial class MainWindow : Window
+  public partial class MainWindow : MetroWindow
   {
     #region Constructor
     public MainWindow()
@@ -138,7 +139,7 @@ namespace Duru.UI
     public void DisplayUserControl(UserControl uc)
     {
       // Add new user control to content area
-      contentArea.Children.Add(uc);
+      ContentArea.Children.Add(uc);
     }
     #endregion   
 
@@ -178,8 +179,8 @@ namespace Duru.UI
       bool ret = true;
 
       // Make sure you don't reload a control already loaded.
-      if (contentArea.Children.Count > 0) {
-        if (((UserControl)contentArea.Children[0]).GetType().FullName == controlName) {
+      if (ContentArea.Children.Count > 0) {
+        if (((UserControl)ContentArea.Children[0]).GetType().FullName == controlName) {
           ret = false;
         }
       }
@@ -192,7 +193,7 @@ namespace Duru.UI
     private void CloseUserControl()
     {
       // Remove current user control
-      contentArea.Children.Clear();
+      ContentArea.Children.Clear();
 
       // Restore the original status message
       _viewModel.StatusMessage = _originalMessage;

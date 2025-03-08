@@ -31,7 +31,7 @@ namespace Duru.UI.ViewModel
       get { return _loginMenuHeader; }
       set {
         _loginMenuHeader = value;
-        // TODO: Güncelleme eventi eklenecek.
+        RaisePropertyChanged("LoginMenuHeader");
       }
     }
 
@@ -40,16 +40,16 @@ namespace Duru.UI.ViewModel
       get { return _statusMessage; }
       set {
         _statusMessage = value;
-        // TODO: Güncelleme eventi eklenecek.
+        RaisePropertyChanged("StatusMessage");
       }
     }
 
-    public bool IsInfoMessageVisible
+    public bool IsInfoMessageVisible 
     {
       get { return _isInfoMessageVisible; }
       set {
         _isInfoMessageVisible = value;
-        // TODO: Güncelleme eventi eklenecek.
+        RaisePropertyChanged("IsInfoMessageVisible");
       }
     }
 
@@ -58,7 +58,7 @@ namespace Duru.UI.ViewModel
       get { return _infoMessage; }
       set {
         _infoMessage = value;
-        // TODO: Güncelleme eventi eklenecek.
+        RaisePropertyChanged("InfoMessage");
       }
     }
 
@@ -67,7 +67,7 @@ namespace Duru.UI.ViewModel
       get { return _infoMessageTitle; }
       set {
         _infoMessageTitle = value;
-        // TODO: Güncelleme eventi eklenecek.
+        RaisePropertyChanged("InfoMessageTitle");
       }
     }
 
@@ -76,7 +76,7 @@ namespace Duru.UI.ViewModel
       get { return _infoMessageTimeout; }
       set {
         _infoMessageTimeout = value;
-        // TODO: Güncelleme eventi eklenecek.
+        RaisePropertyChanged("InfoMessageTimeout");
       }
     }
     
@@ -85,7 +85,7 @@ namespace Duru.UI.ViewModel
       get { return _employeeEntity; }
       set {
         _employeeEntity = value;
-        // TODO: Güncelleme eventi eklenecek.
+        RaisePropertyChanged("EmployeeEntity");
       }
     }
     #endregion

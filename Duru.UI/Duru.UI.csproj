@@ -13,4 +13,9 @@
       <ProjectReference Include="..\Duru.UI.ViewModel\Duru.UI.ViewModel.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="MahApps.Metro" Version="3.0.0-alpha0513" />
+      <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0" />
+    </ItemGroup>
+
 </Project>
