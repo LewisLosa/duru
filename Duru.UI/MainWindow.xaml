@@ -5,7 +5,6 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-                 xmlns:local="clr-namespace:Duru.UI"
                  xmlns:viewModel="clr-namespace:Duru.UI.ViewModel;assembly=Duru.UI.ViewModel"
                  mc:Ignorable="d"
                  Loaded="Window_Loaded"
@@ -17,14 +16,14 @@
                  WindowStartupLocation="CenterScreen">
 
     <mah:MetroWindow.Resources>
-        <viewModel:MainWindowViewModel x:Key="viewModel"
+        <viewModel:MainWindowViewModel x:Key="ViewModel"
                                        InfoMessageTitle="Please Wait While Loading Application..."
-                                       InfoMessageTimeout="1500"
+                                       InfoMessageTimeout="1000"
                                        StatusMessage="Sample WPF Application" />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </mah:MetroWindow.Resources>
 
-    <Grid DataContext="{StaticResource viewModel}">
+    <Grid DataContext="{StaticResource ViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -53,8 +52,8 @@
 
             <MenuItem Header="Users"
                       Click="MenuItem_Click"
-                      IsEnabled="{Binding UserEntity.IsLoggedIn}"
-                      Tag="WPF.Sample.UserControls.UserMaintenanceControl">
+                      IsEnabled="{Binding EmployeeEntity.IsLoggedIn}"
+                      Tag="Duru.UI.Pages.UserMaintenanceControl">
                 <MenuItem.Icon>
                     <iconPacks:PackIconMaterial Kind="AccountGroup" />
                 </MenuItem.Icon>
@@ -62,8 +61,8 @@
 
             <MenuItem Header="Feedback"
                       Click="MenuItem_Click"
-                      IsEnabled="{Binding UserEntity.IsLoggedIn}"
-                      Tag="WPF.Sample.UserControls.UserFeedbackControl">
+                      IsEnabled="{Binding EmployeeEntity.IsLoggedIn}"
+                      Tag="Duru.UI.Pages.UserFeedbackControl">
                 <MenuItem.Icon>
                     <iconPacks:PackIconMaterial Kind="Comment" />
                 </MenuItem.Icon>
