@@ -12,9 +12,9 @@ namespace Duru.UI
     /// </summary>
     public partial class MainWindow : IDisposable
     {
-        // Path constant for the login control to prevent magic strings
-        private const string? LoginControlPath = "Duru.UI.Pages.LoginControl";
-        
+        // Path constant for the login page to prevent magic strings
+        private const string? LoginPagePath = "Duru.UI.Pages.LoginPage";
+
         #region Private Variables
         // View model instance for data binding and UI logic
         private readonly MainWindowViewModel _viewModel;
@@ -31,8 +31,8 @@ namespace Duru.UI
         public MainWindow()
         {
             InitializeComponent();
-            
-            _viewModel = Resources["ViewModel"] as MainWindowViewModel 
+
+            _viewModel = Resources["ViewModel"] as MainWindowViewModel
                 ?? throw new InvalidOperationException("ViewModel not found in resources");
 
             if (_viewModel.StatusMessage != null) _originalMessage = _viewModel.StatusMessage;
@@ -52,7 +52,7 @@ namespace Duru.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to load application: " + ex.Message, "Error", 
+                MessageBox.Show("Failed to load application: " + ex.Message, "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -113,8 +113,8 @@ namespace Duru.UI
                     _viewModel.LoginMenuHeader = "Login";
                     break;
 
-                case MessageBrokerMessages.CLOSE_USER_CONTROL:
-                    CloseUserControl();
+                case MessageBrokerMessages.CLOSE_PAGE:
+                    ClosePage();
                     break;
             }
         }
@@ -133,7 +133,7 @@ namespace Duru.UI
 
             if (command.Contains('.'))
             {
-                LoadUserControl(command);
+                LoadPage(command);
             }
             else
             {
@@ -167,68 +167,68 @@ namespace Duru.UI
         {
             if (_viewModel.EmployeeEntity.IsLoggedIn)
             {
-                CloseUserControl();
+                ClosePage();
                 _viewModel.EmployeeEntity = new Employee();
                 _viewModel.LoginMenuHeader = "Login";
             }
             else
             {
-                LoadUserControl(LoginControlPath);
+                LoadPage(LoginPagePath);
             }
         }
         #endregion
 
-        #region User Control Management
+        #region Page Management
         /// <summary>
-        /// Loads a user control dynamically by its type name
+        /// Loads a page dynamically by its type name
         /// </summary>
-        private void LoadUserControl(string? controlName)
+        private void LoadPage(string? pageName)
         {
-            if (string.IsNullOrEmpty(controlName) || !ShouldLoadUserControl(controlName))
+            if (string.IsNullOrEmpty(pageName) || !ShouldLoadPage(pageName))
                 return;
 
             try
             {
-                Type ucType = Type.GetType(controlName) 
-                    ?? throw new InvalidOperationException($"Control type {controlName} not found");
+                Type pageType = Type.GetType(pageName)
+                    ?? throw new InvalidOperationException($"Page type {pageName} not found");
 
-                var uc = Activator.CreateInstance(ucType) as UserControl 
-                    ?? throw new InvalidOperationException($"Failed to create control of type {controlName}");
+                var page = Activator.CreateInstance(pageType) as Page
+                    ?? throw new InvalidOperationException($"Failed to create page of type {pageName}");
 
-                CloseUserControl();
-                DisplayUserControl(uc);
+                ClosePage();
+                DisplayPage(page);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading control {controlName}: {ex.Message}", 
+                MessageBox.Show($"Error loading page {pageName}: {ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         /// <summary>
-        /// Displays a user control in the content area
+        /// Displays a page in the content area
         /// </summary>
-        public void DisplayUserControl(UserControl uc)
+        public void DisplayPage(Page page)
         {
-            if (uc == null) throw new ArgumentNullException(nameof(uc));
-            ContentArea.Children.Add(uc);
+            if (page == null) throw new ArgumentNullException(nameof(page));
+            ContentArea.Children.Add(page);
         }
 
         /// <summary>
-        /// Checks if a user control should be loaded based on current state
+        /// Checks if a page should be loaded based on current state
         /// </summary>
-        private bool ShouldLoadUserControl(string? controlName)
+        private bool ShouldLoadPage(string? pageName)
         {
-            if (string.IsNullOrEmpty(controlName)) return false;
-            
-            return ContentArea.Children.Count == 0 || 
-                   ((UserControl)ContentArea.Children[0]).GetType().FullName != controlName;
+            if (string.IsNullOrEmpty(pageName)) return false;
+
+            return ContentArea.Children.Count == 0 ||
+                   ((Page)ContentArea.Children[0]).GetType().FullName != pageName;
         }
 
         /// <summary>
-        /// Closes current user control and restores original status
+        /// Closes current page and restores original status
         /// </summary>
-        private void CloseUserControl()
+        private void ClosePage()
         {
             ContentArea.Children.Clear();
             _viewModel.StatusMessage = _originalMessage;
@@ -284,7 +284,7 @@ namespace Duru.UI
         public void Dispose()
         {
             if (_disposed) return;
-            
+
             MessageBroker.Instance.MessageReceived -= Instance_MessageReceived;
             _disposed = true;
         }

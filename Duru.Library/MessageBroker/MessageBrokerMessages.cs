@@ -10,8 +10,8 @@ namespace Common.Library
         public const string DISPLAY_TIMEOUT_INFO_MESSAGE = "DisplayTimeoutInfoMessage";
         public const string DISPLAY_TIMEOUT_INFO_MESSAGE_TITLE = "DisplayTimeoutInfoMessageTitle";
 
-        public const string CLOSE_USER_CONTROL = "CloseUserControl";
-        public const string OPEN_USER_CONTROL = "OpenUserControl";
+        public const string CLOSE_PAGE = "ClosePage";
+        public const string OPEN_PAGE = "OpenPage";
 
         public const string LOGIN_SUCCESS = "LoginSuccess";
         public const string LOGIN_FAIL = "LoginFail";

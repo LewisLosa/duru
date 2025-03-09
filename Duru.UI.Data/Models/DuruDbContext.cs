@@ -8,6 +8,7 @@ namespace Duru.UI.Data.Models
     {
         public DuruDbContext(DbContextOptions<DuruDbContext> options) : base(options)
         {
+            
         }
 
         public virtual DbSet<Room> Rooms { get; set; }

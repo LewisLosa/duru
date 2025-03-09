@@ -12,4 +12,8 @@
       <ProjectReference Include="..\Duru.UI.Data\Duru.UI.Data.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.2" />
+    </ItemGroup>
+
 </Project>

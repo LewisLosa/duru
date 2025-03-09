@@ -67,7 +67,7 @@ namespace Duru.Library.ViewModels
         #region Close Method
         public virtual void Close(bool wasCancelled = true)
         {
-            MessageBroker.Instance.SendMessage(MessageBrokerMessages.CLOSE_USER_CONTROL, wasCancelled);
+            MessageBroker.Instance.SendMessage(MessageBrokerMessages.CLOSE_PAGE, wasCancelled);
         }
         #endregion
 
