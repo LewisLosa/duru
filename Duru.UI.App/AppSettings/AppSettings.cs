@@ -1,7 +1,8 @@
-﻿using Duru.Library.Configuration;
+﻿using System.Diagnostics;
+using Duru.Library.Configuration;
 using Duru.UI.Data.Entities;
 
-namespace Duru.UI.App;
+namespace Duru.UI.App.AppSettings;
 
 public class AppSettings : ConfigurationSettings
 {
@@ -64,7 +65,9 @@ public class AppSettings : ConfigurationSettings
     public override void LoadSettings()
     {
         InfoMessageTimeout = GetSetting<int>("InfoMessageTimeout", 1200);
+        Debug.WriteLine("InfoMessageTimeout: " + InfoMessageTimeout);
         EmailDomain = GetSetting<string>("EmailDomain", "");
+        Debug.WriteLine("EmailDomain: " + EmailDomain);
     }
     #endregion
     

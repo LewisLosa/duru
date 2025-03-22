@@ -11,6 +11,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Duru.Resources\Duru.Resources.csproj" />
+      <ProjectReference Include="..\Duru.UI.App\Duru.UI.App.csproj" />
       <ProjectReference Include="..\Duru.UI.ViewModel\Duru.UI.ViewModel.csproj" />
     </ItemGroup>
 

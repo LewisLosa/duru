@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Timers;
 using Duru.Library.ViewModels;
 using Duru.UI.Data.Entities;
@@ -23,8 +24,8 @@ public sealed class MainWindowViewModel : ViewModelBase
 
     // Timer for auto-hiding info messages
     private Timer? _infoMessageTimer;
-    private int _infoMessageTimeout;
 
+    private int _infoMessageTimeout;
     // Current logged-in employee information
     private Employee _employeeEntity = new Employee();
     #endregion
@@ -94,14 +95,6 @@ public sealed class MainWindowViewModel : ViewModelBase
     /// <summary>
     /// Duration for which info messages are displayed
     /// </summary>
-    public int InfoMessageTimeout
-    {
-        get { return _infoMessageTimeout; }
-        set {
-            _infoMessageTimeout = value;
-            RaisePropertyChanged("InfoMessageTimeout");
-        }
-    }
     
     /// <summary>
     /// Current employee entity for the logged-in user
@@ -114,6 +107,18 @@ public sealed class MainWindowViewModel : ViewModelBase
             RaisePropertyChanged("EmployeeEntity");
         }
     }
+    
+    public int InfoMessageTimeout
+    {
+        get { return _infoMessageTimeout; }
+        set {
+            _infoMessageTimeout = value;
+            RaisePropertyChanged("InfoMessageTimeout");
+        }
+    }
+    
+    
+    
     #endregion
 
     #region Message Management
@@ -161,8 +166,9 @@ public sealed class MainWindowViewModel : ViewModelBase
         InfoMessageTitle = "Loading State Codes...";
         InfoMessage = "State Codes are loading. Please wait.";
 
+        Debug.WriteLine("LoadStateCodesAsync loading... Timeout: " + _infoMessageTimeout);
         await SimulateDataLoading();
-        await Task.Delay(1000); // Additional delay for UI feedback
+        await Task.Delay(_infoMessageTimeout); // Additional delay for UI feedback
     }
 
     /// <summary>
@@ -174,8 +180,9 @@ public sealed class MainWindowViewModel : ViewModelBase
         InfoMessageTitle = "Loading Country Codes...";
         InfoMessage = "Country Codes are loading. Please wait.";
         
+        Debug.WriteLine("LoadCountryCodesAsync loading... Timeout: " + _infoMessageTimeout);
         await SimulateDataLoading();
-        await Task.Delay(1000);
+        await Task.Delay(_infoMessageTimeout);
     }
 
     /// <summary>
@@ -187,8 +194,9 @@ public sealed class MainWindowViewModel : ViewModelBase
         InfoMessageTitle = "Loading Employee Types...";
         InfoMessage = "Employee Types are loading. Please wait.";
         
+        Debug.WriteLine("LoadEmployeeTypesAsync loading... Timeout: " + _infoMessageTimeout);
         await SimulateDataLoading();
-        await Task.Delay(1000);
+        await Task.Delay(_infoMessageTimeout);
     }
 
     /// <summary>

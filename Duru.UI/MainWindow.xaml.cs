@@ -31,7 +31,7 @@ namespace Duru.UI
         public MainWindow()
         {
             InitializeComponent();
-
+            
             _viewModel = Resources["ViewModel"] as MainWindowViewModel
                 ?? throw new InvalidOperationException("ViewModel not found in resources");
 
@@ -56,6 +56,7 @@ namespace Duru.UI
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        
         #endregion
 
         #region Message Broker Events
@@ -267,6 +268,7 @@ namespace Duru.UI
         /// </summary>
         private async Task LoadAllDataAsync()
         {
+            
             await _viewModel.LoadStateCodesAsync();
             await _viewModel.LoadCountryCodesAsync();
             await _viewModel.LoadEmployeeTypesAsync();

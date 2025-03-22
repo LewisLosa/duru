@@ -9,6 +9,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Duru.Library\Duru.Library.csproj" />
+      <ProjectReference Include="..\Duru.Resources\Duru.Resources.csproj" />
+      <ProjectReference Include="..\Duru.UI.App\Duru.UI.App.csproj" />
       <ProjectReference Include="..\Duru.UI.Data\Duru.UI.Data.csproj" />
     </ItemGroup>
 
