@@ -6,7 +6,8 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
-    </PropertyGroup>
+      <UserSecretsId>0b199e4d-5e03-4a3a-9b3b-7581fefa5f54</UserSecretsId>
+  </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Duru.Resources\Duru.Resources.csproj" />

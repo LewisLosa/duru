@@ -82,14 +82,17 @@
         <mah:MetroContentControl Grid.Row="1"
                                  Panel.ZIndex="2"
                                  Visibility="{Binding Path=IsInfoMessageVisible, 
-                                                          Converter={StaticResource BooleanToVisibilityConverter}}">
+                                 Converter={StaticResource BooleanToVisibilityConverter}}">
+            <mah:MetroContentControl.Background>
+                <SolidColorBrush Opacity="0.3" Color="Black"/>
+            </mah:MetroContentControl.Background>
             <Border Background="{DynamicResource MahApps.Brushes.Accent}"
                     Opacity="0.8"
                     CornerRadius="8"
                     Padding="20"
                     Width="480"
                     Height="160"
-                    >
+            >
                 <StackPanel>
                     <mah:ProgressRing IsActive="{Binding IsInfoMessageVisible}"
                                       Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
@@ -113,7 +116,9 @@
         <mah:MetroContentControl Grid.Row="1"
                                  Panel.ZIndex="1"
                                  Margin="10">
-            <Grid x:Name="ContentArea" />
+            <Grid x:Name="ContentArea" >
+                <Frame x:Name="FrameContentArea"></Frame>
+            </Grid>
         </mah:MetroContentControl>
 
         <!-- Status Message Area -->

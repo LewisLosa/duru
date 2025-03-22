@@ -50,7 +50,7 @@ namespace Duru.UI.ViewModel
       bool ret = false;
       try {
         var options = new DbContextOptionsBuilder<DuruDbContext>()
-          .UseSqlServer("name=DuruDatabase")
+          .UseSqlServer("name=HotelDatabaseConfiguration")
           .Options;
 
         var db = new DuruDbContext(options);

@@ -211,7 +211,7 @@ namespace Duru.UI
         public void DisplayPage(Page page)
         {
             if (page == null) throw new ArgumentNullException(nameof(page));
-            ContentArea.Children.Add(page);
+            FrameContentArea.Navigate(page);
         }
 
         /// <summary>
@@ -220,9 +220,14 @@ namespace Duru.UI
         private bool ShouldLoadPage(string? pageName)
         {
             if (string.IsNullOrEmpty(pageName)) return false;
-
-            return ContentArea.Children.Count == 0 ||
-                   ((Page)ContentArea.Children[0]).GetType().FullName != pageName;
+            if (FrameContentArea.Content is Page currentPage)
+            {
+                if (currentPage.GetType().FullName == pageName)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>
@@ -230,7 +235,7 @@ namespace Duru.UI
         /// </summary>
         private void ClosePage()
         {
-            ContentArea.Children.Clear();
+            FrameContentArea.Navigate(null);
             _viewModel.StatusMessage = _originalMessage;
         }
         #endregion
