@@ -9,8 +9,8 @@
                  mc:Ignorable="d"
                  Loaded="Window_Loaded"
                  Title="MainWindow"
-                 Height="650"
-                 Width="800"
+                 Height="600"
+                 Width="1000"
                  BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
                  BorderThickness="0.25"
                  WindowStartupLocation="CenterScreen">
@@ -18,7 +18,7 @@
     <mah:MetroWindow.Resources>
         <viewModel:MainWindowViewModel x:Key="ViewModel"
                                        InfoMessageTitle="Please Wait While Loading Application..."
-                                       StatusMessage="Sample WPF Application" />
+                                       StatusMessage="Application Initializing..." />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </mah:MetroWindow.Resources>
 

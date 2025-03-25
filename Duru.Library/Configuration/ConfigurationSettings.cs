@@ -1,6 +1,4 @@
-using Microsoft.Extensions.Configuration;
-using System;
-
+using System.Configuration;
 namespace Duru.Library.Configuration
 {
     /// <summary>
@@ -8,8 +6,6 @@ namespace Duru.Library.Configuration
     /// </summary>
     public class ConfigurationSettings : CommonBase
     {
-        private readonly IConfiguration _configuration;
-
         #region LoadSettings Method
         public virtual void LoadSettings()
         {
@@ -20,22 +16,18 @@ namespace Duru.Library.Configuration
         #region GetSetting Method
         public T GetSetting<T>(string key, T defaultValue)
         {
-            string value = _configuration[key];
-            if (string.IsNullOrEmpty(value))
-            {
-                return defaultValue;
+            T ret = default(T);
+            string value;
+
+            value = ConfigurationManager.AppSettings[key] ?? string.Empty;
+            if (string.IsNullOrEmpty(value)) {
+                ret = (T)defaultValue;
             }
-            else
-            {
-                try
-                {
-                    return (T)Convert.ChangeType(value, typeof(T));
-                }
-                catch
-                {
-                    return defaultValue;
-                }
+            else {
+                ret = (T)Convert.ChangeType(value, typeof(T));
             }
+
+            return ret;
         }
         #endregion
     }

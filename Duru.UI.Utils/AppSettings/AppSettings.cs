@@ -2,7 +2,7 @@
 using Duru.Library.Configuration;
 using Duru.UI.Data.Entities;
 
-namespace Duru.UI.App.AppSettings;
+namespace Duru.UI.Utils.AppSettings;
 
 public class AppSettings : ConfigurationSettings
 {
