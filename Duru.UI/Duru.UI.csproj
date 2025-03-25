@@ -6,22 +6,18 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
-    </PropertyGroup>
+      <UserSecretsId>0b199e4d-5e03-4a3a-9b3b-7581fefa5f54</UserSecretsId>
+  </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+      <ProjectReference Include="..\Duru.Resources\Duru.Resources.csproj" />
+      <ProjectReference Include="..\Duru.UI.Utils\Duru.UI.Utils.csproj" />
+      <ProjectReference Include="..\Duru.UI.ViewModel\Duru.UI.ViewModel.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Duru.Application\Duru.Application.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Page Update="Views\MainWindow.xaml">
-        <Generator>MSBuild:Compile</Generator>
-        <XamlRuntime>Wpf</XamlRuntime>
-        <SubType>Designer</SubType>
-      </Page>
+      <PackageReference Include="MahApps.Metro" Version="3.0.0-alpha0513" />
+      <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0" />
     </ItemGroup>
 
 </Project>

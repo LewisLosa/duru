@@ -1,28 +1,25 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Windows;
-using Duru.Application.Extensions;
-using Duru.Application.Interfaces;
-using Duru.Application.Mappings;
-using Duru.Application.Services;
-using Duru.UI.ViewModels;
+﻿using System.Windows;
+using Duru.UI.Utils.AppSettings;
 
-namespace Duru.UI
+namespace Duru.UI;
+
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
 {
-    public partial class App : System.Windows.Application
+    protected override void OnStartup(StartupEventArgs e)
     {
-        public static ServiceProvider? ServiceProvider { get; private set; }
+        base.OnStartup(e);
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddScoped<MainWindowViewModel>();
-            serviceCollection.AddTransient<Views.MainWindow>();
-            serviceCollection.AddAutoMapper(typeof(RoomProfile));
-            serviceCollection.AddApplicationServices();
-            var serviceProvider = serviceCollection.BuildServiceProvider();
-            var mainWindow = serviceProvider.GetRequiredService<Views.MainWindow>(); 
-            mainWindow.Show();
-        }
+        // Set the DataDirectory for Entity Framework
+        string path = Environment.CurrentDirectory;
+        path = path.Replace(@"\bin\Debug", "");
+        path += @"\DuruDB\";
+
+        AppDomain.CurrentDomain.SetData("DataDirectory", path);
+
+        // Load Application Settings
+        AppSettings.Instance.LoadSettings();
     }
 }
