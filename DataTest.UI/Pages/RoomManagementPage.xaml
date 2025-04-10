@@ -1,0 +1,144 @@
+﻿<Page x:Class="DataTest.UI.Pages.RoomManagementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:DataTest.UI.Pages"
+      xmlns:vm="clr-namespace:DataTest.UI.ViewModels.Pages"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:converters1="clr-namespace:DataTest.UI.Converters"
+      mc:Ignorable="d"
+      Background="{DynamicResource MahApps.Brushes.Button.Border}"
+      
+      Title="Oda Yönetimi">
+
+    <Page.DataContext>
+        <vm:RoomManagementViewModel></vm:RoomManagementViewModel>
+    </Page.DataContext>
+
+    <Page.Resources>
+        <converters1:RoomStatusToColorConverter x:Key="RoomStatusToColorConverter"/>
+    </Page.Resources>
+
+    <Grid Margin="20 20 0 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Üst Filtreleme Bölümü -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20" >
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Kat:" 
+                           FontSize="16"
+                         VerticalAlignment="Center" 
+                         Margin="0,0,10,0"/>
+                <ComboBox Width="80" 
+                          mah:ControlsHelper.CornerRadius="6"
+                         SelectedItem="{Binding SelectedFloor}">
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                </ComboBox>
+            </StackPanel>
+
+            <TextBox Width="200" 
+                     Margin="20,0"
+                     mah:TextBoxHelper.Watermark="Oda Ara..."
+                     mah:ControlsHelper.CornerRadius="6"
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <StackPanel Orientation="Horizontal" Margin="20,0">
+                <TextBlock Text="Filtre:" 
+                           FontSize="16"
+                         VerticalAlignment="Center" 
+                         Margin="0,0,10,0"/>
+                <ComboBox Width="120" 
+                          mah:ControlsHelper.CornerRadius="6"
+                         SelectedItem="{Binding SelectedFilter}">
+                    <ComboBoxItem Content="Tümü"/>
+                    <ComboBoxItem Content="Müsait"/>
+                    <ComboBoxItem Content="Dolu"/>
+                    <ComboBoxItem Content="Temizleniyor"/>
+                    <ComboBoxItem Content="Bakımda"/>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Sıralama:" 
+                           FontSize="16"
+                         VerticalAlignment="Center" 
+                         Margin="0,0,10,0"/>
+                <ComboBox Width="120" 
+                          mah:ControlsHelper.CornerRadius="6"
+                         SelectedItem="{Binding SelectedSorting}">
+                    <ComboBoxItem Content="Oda Numarası"/>
+                    <ComboBoxItem Content="Durum"/>
+                    <ComboBoxItem Content="Tip"/>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Oda Kartları -->
+        <ScrollViewer Grid.Row="1" 
+                     VerticalScrollBarVisibility="Auto" 
+                     HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl ItemsSource="{Binding Rooms}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel>
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource RoomCardStyle}">
+                            <Grid Style="{StaticResource RoomCardGridStyle}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <DockPanel Grid.Row="0">
+                                    <TextBlock Text="{Binding RoomNumber, StringFormat='Oda {0}'}" 
+                                             Style="{StaticResource RoomNumberTextStyle}"/>
+                                </DockPanel>
+                                <TextBlock Grid.Row="1" 
+                                         Text="{Binding RoomType}" 
+                                         Style="{StaticResource RoomTypeTextStyle}"/>
+
+                                <Border Grid.Row="2" 
+                                      Style="{StaticResource RoomStatusBorderStyle}"
+                                      Background="{Binding Status, Converter={StaticResource RoomStatusToColorConverter}}">
+                                    <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Status}" 
+                                                 Style="{StaticResource RoomStatusTextStyle}"/>
+                                        <StackPanel Orientation="Horizontal" 
+                                                  HorizontalAlignment="Right" 
+                                                  VerticalAlignment="Center">
+                                            <Button Style="{DynamicResource MahApps.Styles.Button.Chromeless}"
+                                                    Padding="5"
+                                                    Command="{Binding DataContext.EditRoomCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}">
+                                                <iconPacks:PackIconFontAwesome Kind="PenSolid" Style="{StaticResource RoomActionIconStyle}"/>
+                                            </Button>
+                                            <Button Style="{DynamicResource MahApps.Styles.Button.Chromeless}"
+                                                    Padding="5"
+
+                                                    Command="{Binding DataContext.ChangeStatusCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}">
+                                                <iconPacks:PackIconFontAwesome Kind="FilePenSolid" Style="{StaticResource RoomActionIconStyle}"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>

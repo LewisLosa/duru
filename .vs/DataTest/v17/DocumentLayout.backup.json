@@ -1,0 +1,142 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DataTest\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|d:\\datatest\\datatest.ui\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|solutionrelative:datatest.ui\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|d:\\datatest\\datatest.ui\\pages\\roommanagementpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|solutionrelative:datatest.ui\\pages\\roommanagementpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|d:\\datatest\\datatest.ui\\viewmodels\\pages\\roommanagementpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|solutionrelative:datatest.ui\\viewmodels\\pages\\roommanagementpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|d:\\datatest\\datatest.ui\\pages\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|solutionrelative:datatest.ui\\pages\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\eyups\\AppData\\Local\\Temp\\.vsdbgsrc\\a9f5de9bcfa7275e7e930ada29bb344da353f971b5a9bc90dbfe86affd6d9912\\XamlReader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|d:\\datatest\\datatest.ui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|solutionrelative:datatest.ui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|d:\\datatest\\datatest.ui\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C37C5DD0-43E5-4679-A2A2-490D98112D75}|DataTest.UI\\DataTest.UI.csproj|solutionrelative:datatest.ui\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Styles.xaml",
+              "DocumentMoniker": "D:\\DataTest\\DataTest.UI\\Styles.xaml",
+              "RelativeDocumentMoniker": "DataTest.UI\\Styles.xaml",
+              "ToolTip": "D:\\DataTest\\DataTest.UI\\Styles.xaml",
+              "RelativeToolTip": "DataTest.UI\\Styles.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-10T20:43:18.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RoomManagementPageViewModel.cs",
+              "DocumentMoniker": "D:\\DataTest\\DataTest.UI\\ViewModels\\Pages\\RoomManagementPageViewModel.cs",
+              "RelativeDocumentMoniker": "DataTest.UI\\ViewModels\\Pages\\RoomManagementPageViewModel.cs",
+              "ToolTip": "D:\\DataTest\\DataTest.UI\\ViewModels\\Pages\\RoomManagementPageViewModel.cs",
+              "RelativeToolTip": "DataTest.UI\\ViewModels\\Pages\\RoomManagementPageViewModel.cs",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T20:10:42.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomePage.xaml",
+              "DocumentMoniker": "D:\\DataTest\\DataTest.UI\\Pages\\HomePage.xaml",
+              "RelativeDocumentMoniker": "DataTest.UI\\Pages\\HomePage.xaml",
+              "ToolTip": "D:\\DataTest\\DataTest.UI\\Pages\\HomePage.xaml",
+              "RelativeToolTip": "DataTest.UI\\Pages\\HomePage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-10T19:31:33.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RoomManagementPage.xaml",
+              "DocumentMoniker": "D:\\DataTest\\DataTest.UI\\Pages\\RoomManagementPage.xaml",
+              "RelativeDocumentMoniker": "DataTest.UI\\Pages\\RoomManagementPage.xaml",
+              "ToolTip": "D:\\DataTest\\DataTest.UI\\Pages\\RoomManagementPage.xaml",
+              "RelativeToolTip": "DataTest.UI\\Pages\\RoomManagementPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-10T12:57:22.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "XamlReader.cs",
+              "DocumentMoniker": "C:\\Users\\eyups\\AppData\\Local\\Temp\\.vsdbgsrc\\a9f5de9bcfa7275e7e930ada29bb344da353f971b5a9bc90dbfe86affd6d9912\\XamlReader.cs",
+              "ToolTip": "C:\\Users\\eyups\\AppData\\Local\\Temp\\.vsdbgsrc\\a9f5de9bcfa7275e7e930ada29bb344da353f971b5a9bc90dbfe86affd6d9912\\XamlReader.cs [Read Only]",
+              "ViewState": "AgIAAJEBAAAAAAAAAAAqwKMBAAACAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T20:43:32.464Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindowViewModel.cs",
+              "DocumentMoniker": "D:\\DataTest\\DataTest.UI\\ViewModels\\MainWindowViewModel.cs",
+              "RelativeDocumentMoniker": "DataTest.UI\\ViewModels\\MainWindowViewModel.cs",
+              "ToolTip": "D:\\DataTest\\DataTest.UI\\ViewModels\\MainWindowViewModel.cs",
+              "RelativeToolTip": "DataTest.UI\\ViewModels\\MainWindowViewModel.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAwwFYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T08:38:51.886Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\DataTest\\DataTest.UI\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "DataTest.UI\\MainWindow.xaml",
+              "ToolTip": "D:\\DataTest\\DataTest.UI\\MainWindow.xaml",
+              "RelativeToolTip": "DataTest.UI\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-10T08:38:05.89Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

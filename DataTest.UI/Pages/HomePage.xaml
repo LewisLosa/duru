@@ -1,0 +1,94 @@
+﻿<Page x:Class="DataTest.UI.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="850"
+      Title="HomePage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <!-- Main Content -->
+        <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="20">
+                <!-- Information Cards -->
+                <UniformGrid Columns="4" Margin="0,0,0,20">
+                    <Border Style="{StaticResource CardBorderStyle}" Background="#FF8C00">
+                        <StackPanel>
+                            <TextBlock Text="Toplam Oda" FontSize="14" Foreground="White" />
+                            <TextBlock Text="36" FontSize="24" FontWeight="Bold" Foreground="White" />
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorderStyle}" Background="#1E90FF">
+                        <StackPanel>
+                            <TextBlock Text="Boş Oda" FontSize="14" Foreground="White" />
+                            <TextBlock Text="8" FontSize="24" FontWeight="Bold" Foreground="White" />
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorderStyle}" Background="#32CD32">
+                        <StackPanel>
+                            <TextBlock Text="Bugün Giriş" FontSize="14" Foreground="White" />
+                            <TextBlock Text="45" FontSize="24" FontWeight="Bold" Foreground="White" />
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorderStyle}" Background="#DC143C">
+                        <StackPanel>
+                            <TextBlock Text="Bugün Çıkış" FontSize="14" Foreground="White" />
+                            <TextBlock Text="12" FontSize="24" FontWeight="Bold" Foreground="White" />
+                        </StackPanel>
+                    </Border>
+                </UniformGrid>
+                <!-- Charts Section -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Müşteri Büyümesi" MinHeight="360" Grid.Column="0" Margin="5">
+                        <lvc:CartesianChart>
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Title="Büyüme" Values="5, 7, 3, 4, 8, 9, 12" PointGeometrySize="10" />
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis Title="Zaman" Labels="Ocak, Şubat, Mart, Nisan, Mayıs, Haziran, Temmuz" />
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis Title="Müşteri Sayısı" />
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+                    </GroupBox>
+                    <GroupBox Header="Boş Oda Dağılımı" MinHeight="360" Grid.Column="1" Margin="5">
+                        <lvc:PieChart>
+                            <lvc:PieChart.Series>
+                                <lvc:PieSeries Title="Tek Kişilik" Values="3" DataLabels="True" />
+                                <lvc:PieSeries Title="Çift Kişilik" Values="4" DataLabels="True" />
+                                <lvc:PieSeries Title="Suit" Values="1" DataLabels="True" />
+                            </lvc:PieChart.Series>
+                        </lvc:PieChart>
+                    </GroupBox>
+                </Grid>
+
+                <GroupBox Header="Aylık Gelir" MinHeight="360" Margin="5">
+                    <lvc:CartesianChart>
+                        <lvc:CartesianChart.Series>
+                            <lvc:ColumnSeries Title="Gelir" Values="12, 15, 18, 22, 19, 25, 30" />
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Aylar" Labels="Ocak, Şubat, Mart, Nisan, Mayıs, Haziran, Temmuz" />
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="Gelir (₺)" />
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,206 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
+
+  <!-- Card (Border) Style for Info Cards -->
+  <Style x:Key="CardBorderStyle" TargetType="Border">
+    <Setter Property="CornerRadius" Value="5"/>
+    <Setter Property="Padding" Value="10"/>
+    <Setter Property="Margin" Value="5"/>
+  </Style>
+  
+  <!-- Optional: Separator style for HamburgerMenu (if used) -->
+  <Style x:Key="CustomHamburgerMenuSeparatorItemStyle" TargetType="mah:HamburgerMenu">
+    <Setter Property="Margin" Value="10,0"/>
+    <Setter Property="Background" Value="Black"/>
+    <Setter Property="Opacity" Value="0.5"/>
+  </Style>
+
+  <!-- Flat StatusBar Style -->
+  <Style x:Key="CustomStatusBarStyle" TargetType="StatusBar">
+    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="Padding" Value="8,0"/>
+    <Setter Property="FontWeight" Value="Light"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="StatusBar">
+          <Border Background="{TemplateBinding Background}"
+                  BorderBrush="Transparent"
+                  BorderThickness="0"
+                  Padding="{TemplateBinding Padding}">
+            <ItemsPresenter/>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <!-- StatusBarItem Style -->
+  <Style x:Key="CustomStatusBarItemStyle" TargetType="StatusBarItem">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="Margin" Value="0,0,10,0"/>
+    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+  </Style>
+
+  <!-- No-Border Button Style -->
+  <Style x:Key="NoBorderButtonStyle" TargetType="Button">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="BorderBrush" Value="Transparent"/>
+    <Setter Property="OverridesDefaultStyle" Value="True"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Grid>
+            <Border x:Name="border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+              <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="border" Property="BorderBrush" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+              <Setter TargetName="border" Property="BorderBrush" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="border" Property="Opacity" Value="0.5"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  
+  <Style x:Key="HamburgerIconStyle" TargetType="iconPacks:PackIconFontAwesome">
+    <Setter Property="Width" Value="22"/>
+    <Setter Property="Height" Value="22"/>
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+      
+  <!-- Smaller icon style for StatusBar -->
+  <Style x:Key="SmallIconStyle" TargetType="iconPacks:PackIconFontAwesome">
+    <Setter Property="Width" Value="16"/>
+    <Setter Property="Height" Value="16"/>
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="Foreground" Value="White"/>
+  </Style>
+
+  <!-- HamburgerMenuItem DataTemplate -->
+  <DataTemplate x:Key="HamburgerMenuItem" DataType="{x:Type mah:HamburgerMenuIconItem}">
+    <DockPanel Height="32" LastChildFill="True">
+      <ContentControl x:Name="IconPart"
+                      Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}, Path=CompactPaneLength}"
+                      Content="{Binding Icon}"
+                      DockPanel.Dock="Left"
+                      Focusable="False" IsTabStop="False"/>
+      <TextBlock x:Name="TextPart"
+                 VerticalAlignment="Center"
+                 FontFamily="Segoe UI"
+                 FontWeight="Light"
+                 FontSize="16"
+                 Text="{Binding Label}"/>
+    </DockPanel>
+  </DataTemplate>
+
+  <!-- Options HamburgerMenuItem DataTemplate -->
+  <DataTemplate x:Key="OptionsHamburgerMenuItem" DataType="{x:Type mah:HamburgerMenuIconItem}">
+    <DockPanel Height="48" LastChildFill="True">
+      <ContentControl x:Name="IconPart"
+                      Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}, Path=CompactPaneLength}"
+                      Content="{Binding Icon}"
+                      Focusable="False" IsTabStop="False"/>
+      <StackPanel VerticalAlignment="Center">
+        <TextBlock x:Name="Name"
+                   VerticalAlignment="Center"
+                   FontFamily="Segoe UI"
+                   FontWeight="SemiBold"
+                   FontSize="14"
+                   Text="{Binding Label}"/>
+        <TextBlock x:Name="Role"
+                   VerticalAlignment="Center"
+                   FontFamily="Segoe UI"
+                   FontWeight="Light"
+                   FontSize="12"
+                   Text="{Binding Tag}"/>
+      </StackPanel>
+      <Button Style="{StaticResource NoBorderButtonStyle}" Width="48" Height="48"
+              HorizontalAlignment="Right" HorizontalContentAlignment="Center"
+              VerticalContentAlignment="Center">
+        <iconPacks:PackIconFontAwesome Kind="GearSolid" Style="{DynamicResource HamburgerIconStyle}"/>
+      </Button>
+    </DockPanel>
+  </DataTemplate>
+
+  <!-- Room Management Page Styles -->
+  <Style x:Key="RoomCardStyle" TargetType="Border">
+    <Setter Property="Width" Value="250"/>
+    <Setter Property="Height" Value="120"/>
+    <Setter Property="Margin" Value="5"/>
+    <Setter Property="CornerRadius" Value="5"/>
+    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Window.Background}"/>
+  </Style>
+
+  <Style x:Key="RoomCardGridStyle" TargetType="Grid">
+    <Setter Property="Margin" Value="10"/>
+  </Style>
+
+  <Style x:Key="RoomNumberTextStyle" TargetType="TextBlock">
+    <Setter Property="FontSize" Value="18"/>
+    <Setter Property="FontWeight" Value="Bold"/>
+  </Style>
+
+  <Style x:Key="RoomTypeTextStyle" TargetType="TextBlock">
+    <Setter Property="Margin" Value="0,5"/>
+    <Setter Property="HorizontalAlignment" Value="Left"/>
+  </Style>
+
+  <Style x:Key="RoomStatusBorderStyle" TargetType="Border">
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="VerticalAlignment" Value="Bottom"/>
+    <Setter Property="CornerRadius" Value="4"/>
+    <Setter Property="Padding" Value="5,0,0,0"/>
+  </Style>
+
+  <Style x:Key="RoomStatusTextStyle" TargetType="TextBlock">
+    <Setter Property="FontWeight" Value="Normal"/>
+    <Setter Property="Opacity" Value="0.7"/>
+    <Setter Property="Margin" Value="2,5"/>
+    <Setter Property="Width" Value="168"/>
+  </Style>
+
+
+  <Style x:Key="RoomActionIconStyle" TargetType="iconPacks:PackIconFontAwesome">
+    <Setter Property="Width" Value="12"/>
+    <Setter Property="Height" Value="12"/>
+  </Style>
+
+  <Style x:Key="FilterComboBoxStyle" TargetType="ComboBox">
+    <Setter Property="Width" Value="120"/>
+    <Setter Property="mah:ControlsHelper.CornerRadius" Value="6"/>
+  </Style>
+
+  <Style x:Key="SearchTextBoxStyle" TargetType="TextBox">
+    <Setter Property="Width" Value="200"/>
+    <Setter Property="Margin" Value="20,0"/>
+    <Setter Property="mah:ControlsHelper.CornerRadius" Value="6"/>
+  </Style>
+
+  <Style x:Key="FilterLabelStyle" TargetType="TextBlock">
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="Margin" Value="0,0,10,0"/>
+  </Style>
+
+</ResourceDictionary>
