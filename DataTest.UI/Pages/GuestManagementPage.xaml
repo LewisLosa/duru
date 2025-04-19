@@ -1,0 +1,105 @@
+﻿<Page x:Class="DataTest.UI.Pages.GuestManagementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:DataTest.UI.Pages"
+      xmlns:viewModels="clr-namespace:DataTest.UI.ViewModels.Pages"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance viewModels:GuestManagementViewModel, IsDesignTimeCreatable=True}"
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Misafir Yönetimi">
+
+    <Page.DataContext>
+        <viewModels:GuestManagementViewModel></viewModels:GuestManagementViewModel>
+    </Page.DataContext>
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Misafir Yönetimi"
+                   Style="{StaticResource MahApps.Styles.TextBlock.HamburgerMenuHeader}"
+                   Margin="0,0,0,10"/>
+
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Guests}"
+                  SelectedItem="{Binding SelectedGuest}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  Style="{StaticResource MahApps.Styles.DataGrid.Azure}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Misafir ID" Binding="{Binding GuestId}" Width="Auto"/>
+                <DataGridTextColumn Header="Ad" Binding="{Binding FirstName}" Width="*"/>
+                <DataGridTextColumn Header="Soyad" Binding="{Binding LastName}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Telefon" Binding="{Binding PhoneNumber}" Width="Auto"/>
+                <DataGridTextColumn Header="Ülke" Binding="{Binding Country}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+             <Button Content="Yeni Misafir"
+                    Command="{Binding AddGuestCommand}"
+                    Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}"
+                    Margin="5,0">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="AccountPlus" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Content="Düzenle"
+                    Command="{Binding EditGuestCommand}"
+                    CommandParameter="{Binding SelectedGuest}"
+                    Style="{StaticResource MahApps.Styles.Button.Square}"
+                    Margin="5,0">
+                 <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="AccountEdit" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Content="Sil"
+                    Command="{Binding DeleteGuestCommand}"
+                    CommandParameter="{Binding SelectedGuest}"
+                     Style="{StaticResource MahApps.Styles.Button.Square.Accent}"
+                    Foreground="White"
+                    Margin="5,0">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="AccountRemove" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Content="Yenile"
+                    Command="{Binding RefreshGuestsCommand}"
+                    Style="{StaticResource MahApps.Styles.Button.Square}"
+                    Margin="5,0">
+                 <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
