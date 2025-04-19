@@ -11,9 +11,37 @@
                  WindowTitleBrush="{DynamicResource MahApps.Brushes.Accent}"
                  BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
                  Title="Hotel Yönetim Sistemi" Height="600" Width="1000"
-                 WindowStartupLocation="CenterScreen">
+                 WindowStartupLocation="CenterScreen"
+                 mah:DialogParticipation.Register="{Binding}">
 
     <mah:MetroWindow.Resources>
+        <DataTemplate x:Key="OptionsHamburgerMenuItem" DataType="{x:Type mah:HamburgerMenuIconItem}">
+            <DockPanel Height="48" LastChildFill="True">
+                <ContentControl x:Name="IconPart"
+                                Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}, Path=CompactPaneLength}"
+                                Content="{Binding Icon}"
+                                Focusable="False" IsTabStop="False" />
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock x:Name="Name"
+                               VerticalAlignment="Center"
+                               FontFamily="Segoe UI"
+                               FontWeight="SemiBold"
+                               FontSize="14"
+                               Text="{Binding Label}" />
+                    <TextBlock x:Name="Role"
+                               VerticalAlignment="Center"
+                               FontFamily="Segoe UI"
+                               FontWeight="Light"
+                               FontSize="12"
+                               Text="{Binding Tag}" />
+                </StackPanel>
+                <Button Style="{StaticResource NoBorderButtonStyle}" Width="48" Height="48"
+                        HorizontalAlignment="Right" HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center" Click="OptionsButton_Click">
+                    <iconPacks:PackIconFontAwesome Kind="GearSolid" Style="{DynamicResource HamburgerIconStyle}" />
+                </Button>
+            </DockPanel>
+        </DataTemplate>
         <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type vm:MenuItem}">
             <Grid Height="48">
                 <Grid.ColumnDefinitions>
@@ -65,14 +93,15 @@
             <Setter Property="ClipToBounds"
                     Value="True" />
             <Setter Property="HorizontalAlignment"
-                    Value="Center" />           
+                    Value="Center" />
             <Setter Property="HorizontalContentAlignment"
                     Value="Center" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Frame}">
                         <!--Border ekranın yarısında gözükmüyor width sorunu düzeltilecek.-->
-                        <Border Width="{Binding ActualWidth, ElementName=HamburgerMenuControl}" Background="{TemplateBinding Background}"
+                        <Border Width="{Binding ActualWidth, ElementName=HamburgerMenuControl}"
+                                Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Padding="0 0 50 0">
@@ -91,7 +120,7 @@
     </mah:MetroWindow.Resources>
 
     <mah:MetroWindow.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </mah:MetroWindow.DataContext>
 
     <!-- Left Window Commands -->
@@ -103,8 +132,8 @@
                     AutomationProperties.Name="Go back"
                     Click="GoBack_OnClick">
                 <mah:FontIcon AutomationProperties.Name="Go back icon"
-                                   FontSize="14"
-                                   Glyph="&#xE72B;" />
+                              FontSize="14"
+                              Glyph="&#xE72B;" />
             </Button>
         </mah:WindowCommands>
     </mah:MetroWindow.LeftWindowCommands>

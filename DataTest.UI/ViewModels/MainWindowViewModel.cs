@@ -42,13 +42,13 @@ public class MainWindowViewModel : BindableBase
             NavigationDestination = new Uri("Pages/RoomManagementPage.xaml", UriKind.RelativeOrAbsolute)
         });
 
-        // Müşteri Yönetimi
+        // Misafir Yönetimi
         this.Menu.Add(new MenuItem()
         {
             Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UserSolid, Style = Application.Current.Resources["HamburgerIconStyle"] as Style },
-            Label = "Müşteri Yönetimi",
+            Label = "Misafir Yönetimi",
             NavigationType = typeof(HomePage),
-            NavigationDestination = new Uri("Pages/CustomerManagementPage.xaml", UriKind.RelativeOrAbsolute)
+            NavigationDestination = new Uri("Pages/GuestManagementPage.xaml", UriKind.RelativeOrAbsolute)
         });
 
         // Ödeme Yönetimi
@@ -95,7 +95,7 @@ public class MainWindowViewModel : BindableBase
             Label = "Eyüp Şengöz",
             Tag = "Developer",
             NavigationType = typeof(HomePage),
-            NavigationDestination = new Uri("Pages/UserManagementPage.xaml", UriKind.RelativeOrAbsolute)
+            NavigationDestination = new Uri("Pages/UserProfilePage.xaml", UriKind.RelativeOrAbsolute)
         });
     }
 }

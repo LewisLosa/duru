@@ -64,6 +64,12 @@ public partial class MainWindow : MetroWindow
     {
         this.navigationService.GoBack();
     }
+    
+    private void OptionsButton_Click(object sender, RoutedEventArgs e)
+    {
+        this.navigationService.Navigate(new Uri("Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
+    }
+    
     private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
     {
         if (e.InvokedItem is MenuItem menuItem && menuItem.IsNavigation)
