@@ -1,0 +1,132 @@
+﻿<Page x:Class="DataTest.UI.Pages.PaymentManagementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:DataTest.UI.Pages"
+      xmlns:viewModels="clr-namespace:DataTest.UI.ViewModels.Pages"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance viewModels:PaymentManagementViewModel, IsDesignTimeCreatable=True}"
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="Ödeme Yönetimi">
+
+    <Page.DataContext>
+        <viewModels:PaymentManagementViewModel></viewModels:PaymentManagementViewModel>
+    </Page.DataContext>
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <RowDefinition Height="Auto"/> <RowDefinition Height="*"/>    <RowDefinition Height="Auto"/> </Grid.RowDefinitions>
+
+        <TextBlock Text="Ödeme Yönetimi" Grid.Row="0"
+                   Style="{StaticResource MahApps.Styles.TextBlock.HamburgerMenuHeader}"
+                   Margin="0,0,0,10"/>
+
+        <Border Grid.Row="1" Padding="10" Margin="0,0,0,10"
+                Background="{DynamicResource MahApps.Brushes.Gray10}">
+            <StackPanel Orientation="Horizontal">
+                <DatePicker Width="120" Margin="0,0,10,0"
+                            mah:TextBoxHelper.Watermark="Başlangıç Tarihi"
+                            SelectedDate="{Binding FilterStartDate, UpdateSourceTrigger=PropertyChanged}"/>
+                <DatePicker Width="120" Margin="0,0,10,0"
+                            mah:TextBoxHelper.Watermark="Bitiş Tarihi"
+                            SelectedDate="{Binding FilterEndDate, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Width="150" Margin="0,0,10,0"
+                         mah:TextBoxHelper.Watermark="Misafir Adı Ara"
+                         Text="{Binding FilterGuestName, UpdateSourceTrigger=PropertyChanged}"/>
+                <ComboBox Width="130" Margin="0,0,10,0"
+                          mah:TextBoxHelper.Watermark="Durum Filtresi"
+                          ItemsSource="{Binding StatusFilters}"
+                          SelectedItem="{Binding SelectedStatusFilter}"/>
+                <Button Content="Filtrele"
+                        Command="{Binding ApplyFilterCommand}"
+                        Style="{StaticResource MahApps.Styles.Button.Square}"
+                        Margin="10,0,0,0">
+                     <Button.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconMaterial Kind="Filter" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                 <Button Command="{Binding RefreshPaymentsCommand}" ToolTip="Listeyi Yenile"
+                         Style="{StaticResource MahApps.Styles.Button.Chromeless}"
+                         VerticalAlignment="Center" Margin="10,0,0,0">
+                      <iconPacks:PackIconMaterial Kind="Refresh" Height="18" Width="18"/>
+                  </Button>
+            </StackPanel>
+        </Border>
+
+
+        <DataGrid Grid.Row="2"
+                  ItemsSource="{Binding Payments}"
+                  SelectedItem="{Binding SelectedPayment}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  Style="{StaticResource MahApps.Styles.DataGrid.Azure}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Fatura ID" Binding="{Binding InvoiceId}" Width="Auto"/>
+                <DataGridTextColumn Header="Rez. ID" Binding="{Binding ReservationId}" Width="Auto"/>
+                <DataGridTextColumn Header="Misafir Adı" Binding="{Binding GuestName}" Width="*"/>
+                <DataGridTextColumn Header="Oda No" Binding="{Binding RoomNumber}" Width="Auto"/>
+                <DataGridTextColumn Header="Toplam Tutar" Binding="{Binding TotalAmount, StringFormat=C}" Width="Auto" CellStyle="{StaticResource MahApps.Styles.DataGridCell}"/>
+                <DataGridTextColumn Header="Ödenen Tutar" Binding="{Binding AmountPaid, StringFormat=C}" Width="Auto" CellStyle="{StaticResource MahApps.Styles.DataGridCell}"/>
+                <DataGridTextColumn Header="Kalan Bakiye" Binding="{Binding BalanceDue, StringFormat=C}" Width="Auto" CellStyle="{StaticResource MahApps.Styles.DataGridCell}"/>
+                <DataGridTextColumn Header="İşlem Tarihi" Binding="{Binding PaymentDate, StringFormat={}{0:dd.MM.yyyy}}" Width="Auto"/>
+                <DataGridTextColumn Header="Ödeme Yöntemi" Binding="{Binding PaymentMethod}" Width="Auto"/>
+                <DataGridTextColumn Header="Durum" Binding="{Binding Status}" Width="Auto"/>
+                </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="Detay Gör"
+                    Command="{Binding ViewPaymentDetailsCommand}"
+                    CommandParameter="{Binding SelectedPayment}"
+                    Style="{StaticResource MahApps.Styles.Button.Square}"
+                    Margin="5,0">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="InformationOutline" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Content="Ödeme Kaydet"
+                    Command="{Binding RecordPaymentCommand}"
+                    CommandParameter="{Binding SelectedPayment}"
+                    Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}"
+                    Margin="5,0">
+                 <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="CashRegister" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+             <Button Content="İade Yap"
+                    Command="{Binding IssueRefundCommand}"
+                    CommandParameter="{Binding SelectedPayment}"
+                    Style="{StaticResource MahApps.Styles.Button.Square.Accent}"
+                    Foreground="White"
+                    Margin="5,0">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="CashRefund" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            </StackPanel>
+    </Grid>
+</Page>
