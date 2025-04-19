@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                    >
 
   <!-- Card (Border) Style for Info Cards -->
   <Style x:Key="CardBorderStyle" TargetType="Border">
@@ -115,33 +116,7 @@
   </DataTemplate>
 
   <!-- Options HamburgerMenuItem DataTemplate -->
-  <DataTemplate x:Key="OptionsHamburgerMenuItem" DataType="{x:Type mah:HamburgerMenuIconItem}">
-    <DockPanel Height="48" LastChildFill="True">
-      <ContentControl x:Name="IconPart"
-                      Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type mah:HamburgerMenu}}, Path=CompactPaneLength}"
-                      Content="{Binding Icon}"
-                      Focusable="False" IsTabStop="False"/>
-      <StackPanel VerticalAlignment="Center">
-        <TextBlock x:Name="Name"
-                   VerticalAlignment="Center"
-                   FontFamily="Segoe UI"
-                   FontWeight="SemiBold"
-                   FontSize="14"
-                   Text="{Binding Label}"/>
-        <TextBlock x:Name="Role"
-                   VerticalAlignment="Center"
-                   FontFamily="Segoe UI"
-                   FontWeight="Light"
-                   FontSize="12"
-                   Text="{Binding Tag}"/>
-      </StackPanel>
-      <Button Style="{StaticResource NoBorderButtonStyle}" Width="48" Height="48"
-              HorizontalAlignment="Right" HorizontalContentAlignment="Center"
-              VerticalContentAlignment="Center">
-        <iconPacks:PackIconFontAwesome Kind="GearSolid" Style="{DynamicResource HamburgerIconStyle}"/>
-      </Button>
-    </DockPanel>
-  </DataTemplate>
+
 
   <!-- Room Management Page Styles -->
   <Style x:Key="RoomCardStyle" TargetType="Border">
