@@ -13,6 +13,11 @@
       <EmbeddedResource Remove="Services\**" />
       <None Remove="Services\**" />
       <Page Remove="Services\**" />
+      <Page Update="Pages\PaymentManagementPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>
@@ -22,6 +27,7 @@
         <PackageReference Include="MahApps.Metro" Version="2.4.10" />
         <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
+        <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
     </ItemGroup>
 
 </Project>
