@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace DataTest.UI.Utils
+namespace Duru.UI.Utils
 {
     internal class DelegateCommand : ICommand
     {
