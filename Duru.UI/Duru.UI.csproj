@@ -6,18 +6,37 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
-      <UserSecretsId>0b199e4d-5e03-4a3a-9b3b-7581fefa5f54</UserSecretsId>
-  </PropertyGroup>
+        <Version>0.1.1</Version>
+        <Title>Duru - Hotel Yönetim Sistemi</Title>
+        <Authors>Eyüp Şengöz</Authors>
+        <Description>Hotel Yönetim Sistemi</Description>
+        <PackageProjectUrl>https://github.com/lewislosa/duru</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/lewislosa/duru</RepositoryUrl>
+        <Company>losa.dev</Company>
+        <Product>Duru - Hotel Yönetim Sistemi</Product>
+        <AssemblyName>Duru</AssemblyName>
+    </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Duru.Resources\Duru.Resources.csproj" />
-      <ProjectReference Include="..\Duru.UI.Utils\Duru.UI.Utils.csproj" />
-      <ProjectReference Include="..\Duru.UI.ViewModel\Duru.UI.ViewModel.csproj" />
+      <Compile Remove="Services\**" />
+      <EmbeddedResource Remove="Services\**" />
+      <None Remove="Services\**" />
+      <Page Remove="Services\**" />
+      <Page Update="Pages\PaymentManagementPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MahApps.Metro" Version="3.0.0-alpha0513" />
-      <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+        <PackageReference Include="LiveCharts" Version="0.9.7" />
+        <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+        <PackageReference Include="MahApps.Metro" Version="2.4.10" />
+        <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
+        <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
     </ItemGroup>
 
 </Project>
