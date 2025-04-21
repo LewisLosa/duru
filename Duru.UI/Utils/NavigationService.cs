@@ -5,9 +5,6 @@ namespace Duru.UI.Utils;
 
 public class NavigationService
 {
-    public event NavigatedEventHandler Navigated;
-
-    public event NavigationFailedEventHandler NavigationFailed;
 
     private Frame _frame;
 
@@ -17,7 +14,7 @@ public class NavigationService
         {
             if (_frame == null)
             {
-                _frame = new Frame() { NavigationUIVisibility = NavigationUIVisibility.Hidden };
+                _frame = new Frame { NavigationUIVisibility = NavigationUIVisibility.Hidden };
                 RegisterFrameEvents();
             }
 
@@ -34,17 +31,23 @@ public class NavigationService
     public bool CanGoBack => Frame.CanGoBack;
 
     public bool CanGoForward => Frame.CanGoForward;
+    public event NavigatedEventHandler Navigated;
 
-    public void GoBack() => Frame.GoBack();
+    public event NavigationFailedEventHandler NavigationFailed;
 
-    public void GoForward() => Frame.GoForward();
+    public void GoBack()
+    {
+        Frame.GoBack();
+    }
+
+    public void GoForward()
+    {
+        Frame.GoForward();
+    }
 
     public bool Navigate(Uri sourcePageUri, object extraData = null)
     {
-        if (Frame.CurrentSource != sourcePageUri)
-        {
-            return Frame.Navigate(sourcePageUri, extraData);
-        }
+        if (Frame.CurrentSource != sourcePageUri) return Frame.Navigate(sourcePageUri, extraData);
 
         return false;
     }
@@ -52,9 +55,7 @@ public class NavigationService
     public bool Navigate(Type sourceType)
     {
         if (Frame.NavigationService?.Content?.GetType() != sourceType)
-        {
             return Frame.Navigate(Activator.CreateInstance(sourceType));
-        }
 
         return false;
     }
@@ -77,8 +78,13 @@ public class NavigationService
         }
     }
 
-    private void Frame_NavigationFailed(object sender, NavigationFailedEventArgs e) =>
+    private void Frame_NavigationFailed(object sender, NavigationFailedEventArgs e)
+    {
         NavigationFailed?.Invoke(sender, e);
+    }
 
-    private void Frame_Navigated(object sender, NavigationEventArgs e) => Navigated?.Invoke(sender, e);
+    private void Frame_Navigated(object sender, NavigationEventArgs e)
+    {
+        Navigated?.Invoke(sender, e);
+    }
 }
