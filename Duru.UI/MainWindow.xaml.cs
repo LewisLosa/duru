@@ -2,38 +2,42 @@
 using System.Windows.Navigation;
 using MahApps.Metro.Controls;
 using MenuItem = Duru.UI.ViewModels.MenuItem;
+using NavigationService = Duru.UI.Utils.NavigationService;
 
 
 namespace Duru.UI;
 
-using MenuItem = ViewModels.MenuItem;
+using MenuItem = MenuItem;
 
 /// <summary>
-/// Interaction logic for MainWindow.xaml
+///     Interaction logic for MainWindow.xaml
 /// </summary>
 public partial class MainWindow : MetroWindow
 {
-    private readonly Utils.NavigationService navigationService;
+    private readonly NavigationService navigationService;
     public MainWindow()
     {
         InitializeComponent();
-        this.navigationService = new Utils.NavigationService();
-        this.navigationService.Navigated += this.NavigationService_OnNavigated;
-        this.HamburgerMenuControl.Content = this.navigationService.Frame;
+        navigationService = new NavigationService();
+        navigationService.Navigated += NavigationService_OnNavigated;
+        HamburgerMenuControl.Content = navigationService.Frame;
 
         // Navigate to the home page.
-        this.Loaded += (sender, args) => this.navigationService.Navigate(new Uri("Pages/HomePage.xaml", UriKind.RelativeOrAbsolute));
+        Loaded += (sender, args) =>
+            navigationService.Navigate(new Uri("Pages/HomePage.xaml", UriKind.RelativeOrAbsolute));
     }
 
     private void NavigationService_OnNavigated(object sender, NavigationEventArgs e)
     {
         // select the menu item
-        this.HamburgerMenuControl.SetCurrentValue(HamburgerMenu.SelectedItemProperty,
-            this.HamburgerMenuControl.Items
+        HamburgerMenuControl.SetCurrentValue(
+            HamburgerMenu.SelectedItemProperty,
+            HamburgerMenuControl.Items
                 .OfType<MenuItem>()
                 .FirstOrDefault(x => x.NavigationDestination == e.Uri));
-        this.HamburgerMenuControl.SetCurrentValue(HamburgerMenu.SelectedOptionsItemProperty,
-            this.HamburgerMenuControl
+        HamburgerMenuControl.SetCurrentValue(
+            HamburgerMenu.SelectedOptionsItemProperty,
+            HamburgerMenuControl
                 .OptionsItems
                 .OfType<MenuItem>()
                 .FirstOrDefault(x => x.NavigationDestination == e.Uri));
@@ -49,34 +53,30 @@ public partial class MainWindow : MetroWindow
         //                                                     .FirstOrDefault(x => x.NavigationType == e.Content?.GetType());
 
         // update back button
-        this.GoBackButton.SetCurrentValue(VisibilityProperty, this.navigationService.CanGoBack ? Visibility.Visible : Visibility.Collapsed);
+        GoBackButton.SetCurrentValue(
+            VisibilityProperty, navigationService.CanGoBack ? Visibility.Visible : Visibility.Collapsed);
     }
 
 
     private void HamburgerToggleButton_Click(object sender, RoutedEventArgs e)
     {
-        if (HamburgerMenuControl != null)
-        {
-            HamburgerMenuControl.IsPaneOpen = !HamburgerMenuControl.IsPaneOpen;
-        }
+        if (HamburgerMenuControl != null) HamburgerMenuControl.IsPaneOpen = !HamburgerMenuControl.IsPaneOpen;
     }
 
 
     private void GoBack_OnClick(object sender, RoutedEventArgs e)
     {
-        this.navigationService.GoBack();
+        navigationService.GoBack();
     }
-    
+
     private void OptionsButton_Click(object sender, RoutedEventArgs e)
     {
-        this.navigationService.Navigate(new Uri("Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
+        navigationService.Navigate(new Uri("Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
     }
-    
+
     private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
     {
         if (e.InvokedItem is MenuItem menuItem && menuItem.IsNavigation)
-        {
-            this.navigationService.Navigate(menuItem.NavigationDestination);
-        }
+            navigationService.Navigate(menuItem.NavigationDestination);
     }
 }
