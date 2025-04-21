@@ -3,10 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Duru.UI.Pages"
       xmlns:viewModels="clr-namespace:Duru.UI.ViewModels.Pages"
       xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d"
       d:DataContext="{d:DesignInstance viewModels:UserProfileViewModel, IsDesignTimeCreatable=True}"
       mah:DialogParticipation.Register="{Binding}"
@@ -14,7 +12,7 @@
       Title="Profilim">
 
     <Page.DataContext>
-        <viewModels:UserProfileViewModel></viewModels:UserProfileViewModel>
+        <viewModels:UserProfileViewModel />
     </Page.DataContext>
 
     <Grid Margin="15">
@@ -51,11 +49,11 @@
 
                     <StackPanel>
                         <PasswordBox x:Name="CurrentPasswordBox" mah:TextBoxHelper.Watermark="Mevcut Şifreniz"
-                                     Margin="0,0,0,10"/>
+                                     Margin="0,0,0,10" />
                         <PasswordBox x:Name="NewPasswordBox"
-                                     mah:TextBoxHelper.Watermark="Yeni Şifreniz (En az 6 karakter)" Margin="0,0,0,10"/>
+                                     mah:TextBoxHelper.Watermark="Yeni Şifreniz (En az 6 karakter)" Margin="0,0,0,10" />
                         <PasswordBox x:Name="ConfirmPasswordBox" mah:TextBoxHelper.Watermark="Yeni Şifreniz (Tekrar)"
-                                     Margin="0,0,0,15"/>
+                                     Margin="0,0,0,15" />
 
                         <Button Content="Şifreyi Kaydet" HorizontalAlignment="Left"
                                 Command="{Binding ChangePasswordCommand}" IsEnabled="{Binding}" />
