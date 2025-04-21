@@ -1,8 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿namespace Duru.UI.ViewModels.Pages;
 
-namespace Duru.UI.ViewModels.Pages;
-
-public partial class HomePageViewModel
+public class HomePageViewModel
 {
-    
 }
