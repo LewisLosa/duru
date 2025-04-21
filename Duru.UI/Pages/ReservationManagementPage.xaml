@@ -9,21 +9,21 @@
       d:DataContext="{d:DesignInstance viewModels:ReservationManagementViewModel, IsDesignTimeCreatable=True}"
       d:DesignHeight="600" d:DesignWidth="800"
       Title="Rezervasyon Yönetimi">
-    
+
     <Page.DataContext>
-        <viewModels:ReservationManagementViewModel></viewModels:ReservationManagementViewModel>
+        <viewModels:ReservationManagementViewModel />
     </Page.DataContext>
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <TextBlock Text="Rezervasyon Yönetimi"
                    Style="{StaticResource MahApps.Styles.TextBlock.HamburgerMenuHeader}"
-                   Margin="0,0,0,10"/>
+                   Margin="0,0,0,10" />
 
         <DataGrid Grid.Row="1"
                   ItemsSource="{Binding Reservations}"
@@ -33,12 +33,14 @@
                   CanUserAddRows="False"
                   Style="{StaticResource MahApps.Styles.DataGrid.Azure}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Rezervasyon ID" Binding="{Binding ReservationId}" Width="Auto"/>
-                <DataGridTextColumn Header="Misafir Adı" Binding="{Binding GuestName}" Width="*"/>
-                <DataGridTextColumn Header="Oda Numarası" Binding="{Binding RoomNumber}" Width="Auto"/>
-                <DataGridTextColumn Header="Giriş Tarihi" Binding="{Binding CheckInDate, StringFormat={}{0:dd.MM.yyyy}}" Width="Auto"/>
-                <DataGridTextColumn Header="Çıkış Tarihi" Binding="{Binding CheckOutDate, StringFormat={}{0:dd.MM.yyyy}}" Width="Auto"/>
-                <DataGridTextColumn Header="Durum" Binding="{Binding Status}" Width="Auto"/>
+                <DataGridTextColumn Header="Rezervasyon ID" Binding="{Binding ReservationId}" Width="Auto" />
+                <DataGridTextColumn Header="Misafir Adı" Binding="{Binding GuestName}" Width="*" />
+                <DataGridTextColumn Header="Oda Numarası" Binding="{Binding RoomNumber}" Width="Auto" />
+                <DataGridTextColumn Header="Giriş Tarihi"
+                                    Binding="{Binding CheckInDate, StringFormat={}{0:dd.MM.yyyy}}" Width="Auto" />
+                <DataGridTextColumn Header="Çıkış Tarihi"
+                                    Binding="{Binding CheckOutDate, StringFormat={}{0:dd.MM.yyyy}}" Width="Auto" />
+                <DataGridTextColumn Header="Durum" Binding="{Binding Status}" Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
 
@@ -50,8 +52,8 @@
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <iconPacks:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                            <iconPacks:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>
@@ -61,11 +63,11 @@
                     CommandParameter="{Binding SelectedReservation}"
                     Style="{StaticResource MahApps.Styles.Button.Square}"
                     Margin="5,0">
-                 <Button.ContentTemplate>
+                <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <iconPacks:PackIconMaterial Kind="Pencil" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                            <iconPacks:PackIconMaterial Kind="Pencil" VerticalAlignment="Center" Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>
@@ -79,8 +81,8 @@
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <iconPacks:PackIconMaterial Kind="Delete" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                            <iconPacks:PackIconMaterial Kind="Delete" VerticalAlignment="Center" Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>
@@ -89,11 +91,11 @@
                     Command="{Binding RefreshReservationsCommand}"
                     Style="{StaticResource MahApps.Styles.Button.Square}"
                     Margin="5,0">
-                 <Button.ContentTemplate>
+                <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                            <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>

@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Duru.UI.Pages"
       xmlns:viewModels="clr-namespace:Duru.UI.ViewModels.Pages"
       xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
@@ -13,37 +12,41 @@
       Title="Entegrasyonlar" mah:DialogParticipation.Register="{Binding}">
 
     <Page.DataContext>
-        <viewModels:IntegrationsViewModel></viewModels:IntegrationsViewModel>
+        <viewModels:IntegrationsViewModel />
     </Page.DataContext>
-    
+
     <Grid Margin="15">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <TextBlock Text="Entegrasyon Ayarları" Grid.Row="0"
                    Style="{StaticResource MahApps.Styles.TextBlock.HamburgerMenuHeader}"
-                   Margin="0,0,0,15"/>
+                   Margin="0,0,0,15" />
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding IntegrationCategories}" Grid.IsSharedSizeScope="True">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="{x:Type viewModels:IntegrationCategoryViewModel}">
-                        <Border BorderBrush="{DynamicResource MahApps.Brushes.Gray8}" BorderThickness="0,0,0,1" Padding="10,15">
+                        <Border BorderBrush="{DynamicResource MahApps.Brushes.Gray8}" BorderThickness="0,0,0,1"
+                                Padding="10,15">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/> <ColumnDefinition Width="*"/>    <ColumnDefinition Width="Auto"/> </Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" /> <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
 
                                 <iconPacks:PackIconMaterial Kind="{Binding IconKind}"
                                                             Grid.Column="0"
                                                             Width="32" Height="32"
                                                             VerticalAlignment="Center" Margin="0,0,15,0"
-                                                            Foreground="{DynamicResource MahApps.Brushes.Accent}"/>
+                                                            Foreground="{DynamicResource MahApps.Brushes.Accent}" />
 
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding Description}" FontSize="12" Foreground="{DynamicResource MahApps.Brushes.Gray2}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding Description}" FontSize="12"
+                                               Foreground="{DynamicResource MahApps.Brushes.Gray2}" TextWrapping="Wrap" />
                                 </StackPanel>
 
                                 <Button Grid.Column="2"
@@ -51,8 +54,8 @@
                                         Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}"
                                         VerticalAlignment="Center"
                                         Command="{Binding DataContext.ShowIntegrationSettingsCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                        CommandParameter="{Binding}"/>
-                                        </Grid>
+                                        CommandParameter="{Binding}" />
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

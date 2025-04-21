@@ -16,7 +16,8 @@
     </Page.Resources>
     <Grid>
         <!-- Main Content -->
-        <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Hidden"
+                      VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="20">
                 <!-- Information Cards -->
                 <UniformGrid Columns="4" Margin="0,0,0,20">
