@@ -18,25 +18,39 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Remove="Services\**" />
-      <EmbeddedResource Remove="Services\**" />
-      <None Remove="Services\**" />
-      <Page Remove="Services\**" />
-      <Page Update="Pages\PaymentManagementPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-        <XamlRuntime>Wpf</XamlRuntime>
-        <SubType>Designer</SubType>
-      </Page>
+        <Compile Remove="Services\**"/>
+        <EmbeddedResource Remove="Services\**"/>
+        <None Remove="Services\**"/>
+        <Page Remove="Services\**"/>
+        <Page Update="Pages\PaymentManagementPage.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <XamlRuntime>Wpf</XamlRuntime>
+            <SubType>Designer</SubType>
+        </Page>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-        <PackageReference Include="LiveCharts" Version="0.9.7" />
-        <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
-        <PackageReference Include="MahApps.Metro" Version="2.4.10" />
-        <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
-        <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0"/>
+        <PackageReference Include="LiveCharts" Version="0.9.7"/>
+        <PackageReference Include="LiveCharts.Wpf" Version="0.9.7"/>
+        <PackageReference Include="MahApps.Metro" Version="2.4.10"/>
+        <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4"/>
+        <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Duru.Data\Duru.Data.csproj"/>
     </ItemGroup>
 
 </Project>
