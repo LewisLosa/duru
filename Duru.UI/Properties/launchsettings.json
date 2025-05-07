@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "Duru.UI (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "Duru.UI (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}

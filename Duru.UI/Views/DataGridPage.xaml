@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="Duru.UI.Views.DataGridPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d">
+
+    <Grid x:Name="ContentArea">
+        <controls:DataGrid
+            AutoGenerateColumns="False"
+            GridLinesVisibility="Horizontal"
+            ItemsSource="{x:Bind ViewModel.Source, Mode=OneWay}">
+            <controls:DataGrid.Resources>
+            </controls:DataGrid.Resources>
+            <controls:DataGrid.Columns>
+                <!-- TODO: Replace column definitions to match real data. Consider adding Header values to Resources.resw. -->
+                <controls:DataGridTextColumn Binding="{Binding Id}" Header="Room ID" />
+                <controls:DataGridTextColumn Binding="{Binding Name}" Header="Room Name" />
+                <controls:DataGridTextColumn Binding="{Binding Description}" Header="Room Description" />
+                <controls:DataGridTextColumn Binding="{Binding Capacity}" Header="Room Capacity" />
+                <controls:DataGridTextColumn Binding="{Binding Type}" Header="Room Type" />
+                <controls:DataGridTextColumn Binding="{Binding Status}" Header="Room Status" />
+                <controls:DataGridTextColumn Binding="{Binding CreatedAt}" Header="CreatedAt" />
+                <controls:DataGridTextColumn Binding="{Binding UpdatedAt}" Header="UpdatedAt" />
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </Grid>
+</Page>
