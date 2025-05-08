@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls" xmlns:viewmodels="using:Duru.UI.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DataGridViewModel}"
     mc:Ignorable="d">
 
     <Grid x:Name="ContentArea">
@@ -15,7 +15,6 @@
             <controls:DataGrid.Resources>
             </controls:DataGrid.Resources>
             <controls:DataGrid.Columns>
-                <!-- TODO: Replace column definitions to match real data. Consider adding Header values to Resources.resw. -->
                 <controls:DataGridTextColumn Binding="{Binding Id}" Header="Room ID" />
                 <controls:DataGridTextColumn Binding="{Binding Name}" Header="Room Name" />
                 <controls:DataGridTextColumn Binding="{Binding Description}" Header="Room Description" />
@@ -24,7 +23,34 @@
                 <controls:DataGridTextColumn Binding="{Binding Status}" Header="Room Status" />
                 <controls:DataGridTextColumn Binding="{Binding CreatedAt}" Header="CreatedAt" />
                 <controls:DataGridTextColumn Binding="{Binding UpdatedAt}" Header="UpdatedAt" />
+
             </controls:DataGrid.Columns>
         </controls:DataGrid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 0 40">
+            <Button Margin="5" Style="{StaticResource DefaultButtonStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Delete"/>
+                    <TextBlock Margin="5 0 0 0" FontSize="16" Text="Sil"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="5" Style="{StaticResource DefaultButtonStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Edit"/>
+                    <TextBlock Margin="5 0 0 0" FontSize="16" Text="Güncelle"/>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding AddFunctionCommand}"   Margin="5" Style="{StaticResource DefaultButtonStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon  Symbol="Add"/>
+                    <TextBlock Margin="5 0 0 0" FontSize="16" Text="Ekle"/>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding TestCommandCommand}" Margin="5" Style="{StaticResource AccentButtonStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Refresh"/>
+                    <TextBlock Margin="5 0 0 0" FontSize="16" Text="Yenile"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 </Page>
